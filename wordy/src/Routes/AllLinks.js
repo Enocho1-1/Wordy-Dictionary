@@ -6,7 +6,7 @@ export const AllLinks = () => {
     <>
         <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route  path="search/:id" element={<Search/>}/>
+            <Route  path="search" element={<Search apiPath="collegiate/json/"/>}/>
             <Route  path="thesaurus" element={<Thesaurus/>}/>
         </Routes>
     </>
