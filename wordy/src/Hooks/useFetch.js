@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react"
 
 export const useFetch = (apiPath, queryWord = "") => {
-    const [data, setData] = useState([])
-
+    const [word, setWord ] = useState("")
+    const [pos, setPOS ] = useState("")
     useEffect( () => {
         async function fetchWord(){
           try{
-            const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/${apiPath}${queryWord}?key=45545920-5e60-4798-8860-6f94563da892`)
+            const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/${apiPath}${queryWord}?key=${process.env.REACT_APP_API_KEY}`)
             const result = await response.json()
-            setData(result[0].meta)
+            console.log(result[0])
+            setWord(result[0].meta.id)
+            setPOS(result[0].fl)
           }catch(error){
             console.log(error)
           }
@@ -16,5 +18,5 @@ export const useFetch = (apiPath, queryWord = "") => {
         fetchWord()
       },[apiPath])
 
-  return { data }
+  return { word, pos }
 }
