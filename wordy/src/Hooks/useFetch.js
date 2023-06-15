@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 export const useFetch = (apiPath, queryWord = "") => {
     const [word, setWord ] = useState("")
     const [pos, setPOS ] = useState("")
+    const [variants, setVariants ] = useState([])
     useEffect( () => {
         async function fetchWord(){
           try{
@@ -11,6 +12,7 @@ export const useFetch = (apiPath, queryWord = "") => {
             console.log(result[0])
             setWord(result[0].meta.id)
             setPOS(result[0].fl)
+            setVariants(result[0].meta.stems)
           }catch(error){
             console.log(error)
           }
@@ -18,5 +20,5 @@ export const useFetch = (apiPath, queryWord = "") => {
         fetchWord()
       },[apiPath])
 
-  return { word, pos }
+  return { word, pos, variants }
 }
