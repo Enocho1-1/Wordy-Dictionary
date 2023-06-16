@@ -9,7 +9,8 @@ module.exports = {
       colors:{
         "coral": "#ff7f50",
         "lime": "#4dff4d",
-        "lightRed": "#ff4433"
+        "lightRed": "#ff4433",
+        "olive": "#bab86c"
       }
     },
   },
