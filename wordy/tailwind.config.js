@@ -11,6 +11,9 @@ module.exports = {
         "lime": "#4dff4d",
         "lightRed": "#ff4433",
         "olive": "#bab86c"
+      },
+      animation: {
+        bounce: 'bounce 2s ease-in-out infinite',
       }
     },
   },
