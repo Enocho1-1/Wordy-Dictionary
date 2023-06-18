@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom"
 import { useFetch } from "../Hooks/useFetch"
+import { NotFound } from "./NotFound"
 
 export const Search = ({apiPath}) => {
 
@@ -15,7 +16,7 @@ export const Search = ({apiPath}) => {
 
       {/* Found/Not Found conditional rendering */}
       { def.length === 0 
-        ? console.log("cannot find word")
+        ?< NotFound/>
         :  
           <div className="p-6">
             {/* User Word & Part of Speech */}

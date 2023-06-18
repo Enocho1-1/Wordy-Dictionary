@@ -13,7 +13,7 @@
     background-color: rgba( 0, 0, 0, .55)
 }
 
-#homeTitle{
+#homeTitle, #notFound{
     text-shadow: 5px 6px 2px rgba(0,0,0,0.6);
 }
 
