@@ -32,7 +32,10 @@ export const Search = ({apiPath}) => {
           <div className="mt-4">
              <ol>
               {def.map((item, index ) => (
-                <li className="text-3xl font-semibold my-3" key={index}>{item}</li>
+                <div className="">
+                   <li className="text-3xl font-semibold my-3" key={index}><span className="text-2xl text-lime mx-3">{index}:</span>{item}</li>
+                </div>
+               
               ))}
              </ol>
           </div>
