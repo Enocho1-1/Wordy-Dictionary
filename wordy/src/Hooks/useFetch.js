@@ -11,8 +11,7 @@ export const useFetch = (apiPath, queryWord = "") => {
           try{
             const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/${apiPath}${queryWord}?key=${process.env.REACT_APP_API_KEY}`)
             const result = await response.json()
-            console.log(result[0])
-        
+            
             setWord(result[0].meta.id)
             setPOS(result[0].fl)
             setPronounce(result[0].hwi.hw)
