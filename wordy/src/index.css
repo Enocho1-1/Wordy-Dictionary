@@ -13,7 +13,7 @@
     background-color: rgba( 0, 0, 0, .55)
 }
 
-#homeTitle, #notFound{
+#homeTitle, #notFound, #favoriteTitle{
     text-shadow: 5px 6px 2px rgba(0,0,0,0.6);
 }
 
@@ -26,3 +26,11 @@ section > div{
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+aside > div {
+
+    background: rgba( 255, 255, 255, 0.45 );
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}

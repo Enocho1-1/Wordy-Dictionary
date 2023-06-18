@@ -1,10 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Routes, Route } from "react-router-dom"
 import { Home, Search, Thesaurus } from "../pages"
 
 export const AllLinks = () => {
 
-  const [favorites, setFavorites] = useState([])
+  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem("favorites"))  || [])
+
+  useEffect( () => {
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+  }, [favorites])
   return (
     <>
         <Routes>

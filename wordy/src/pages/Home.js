@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
+import { FavoriteList } from "../components/FavoriteList"
 
-export const Home = () => {
+export const Home = ({favoriteList, setFavorites}) => {
     const navigate = useNavigate()
     const handleSumbit = (event) => {
         event.preventDefault()
@@ -9,8 +10,8 @@ export const Home = () => {
         navigate(`/search?word=${queryTerm}`)
     }
   return (
-    <section className="absolute z-10 h-full w-full flex justify-center items-center">
-        <div className="h-auto w-[750px] mb-[20em] p-6">
+    <section className="absolute z-10 h-full w-full flex flex-col justify-center items-center">
+        <div className="h-auto w-[750px] mb-[5em] p-6">
             <form onSubmit={handleSumbit} className="flex items-center">   
                 <label htmlFor="simple-search" className="sr-only">Search</label>
                 <div className="relative w-full">
@@ -25,6 +26,9 @@ export const Home = () => {
                 </button>
             </form>
         </div>
+
+        <FavoriteList  favoriteList={favoriteList}/>
+        
     </section>
   )
 }
