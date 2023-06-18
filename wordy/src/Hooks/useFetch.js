@@ -19,7 +19,7 @@ export const useFetch = (apiPath, queryWord = "") => {
             setVariants(result[0].meta.stems)
     
           }catch(error){
-            console.log(error)
+            console.log("Word not found")
           }
         }
         fetchWord()

@@ -1,25 +1,51 @@
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useSearchParams } from "react-router-dom"
 import { useFetch } from "../Hooks/useFetch"
 import { NotFound } from "./NotFound"
 import star from "../assests/star.png"
 
-export const Search = ({apiPath}) => {
+export const Search = ({apiPath, favoriteList, setFavorites}) => {
 
   const [search] = useSearchParams()
   const queryWord = search.get("word")
   const {word, pos, variants, def, pronounce} = useFetch(apiPath, queryWord)
   const wordArray = [variants[0], variants[1], variants[2]]
 
+  const notify = () => toast.success("Word Has Been Added!");
 
+  const handleFavoriteWord = (event) => {
+
+    const favWord = {
+      id: Math.floor(Math.random() * 10000),
+      word: word
+    }
+
+    setFavorites([...favoriteList, favWord])
+  }
+
+    console.log(favoriteList)
   return (
     <section className="absolute z-10 h-full max-w-7xl flex justify-center items-center">
-
       {/* Found/Not Found conditional rendering */}
       { def.length === 0 
         ?< NotFound/>
         :  
           <div className=" relative p-6">
-            <span className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
+             <ToastContainer
+                position="top-left"
+                autoClose={1000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover
+                theme="light"
+                />
+            <span onClick={() => {handleFavoriteWord() ; notify()}} className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
             {/* User Word & Part of Speech */}
             <div className="flex flex-col">
               <aside className="flex items-center">

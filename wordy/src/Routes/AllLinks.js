@@ -8,8 +8,8 @@ export const AllLinks = () => {
   return (
     <>
         <Routes>
-            <Route path="/" element={<Home favoriteList={favorites}/>}/>
-            <Route  path="search" element={<Search apiPath="collegiate/json/" favoriteList={favorites}/>}/>
+            <Route path="/" element={<Home favoriteList={favorites} setFavorites={setFavorites}/>}/>
+            <Route  path="search" element={<Search apiPath="collegiate/json/" favoriteList={favorites} setFavorites={setFavorites}/>}/>
             <Route  path="thesaurus" element={<Thesaurus/>}/>
         </Routes>
     </>
