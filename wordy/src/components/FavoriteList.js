@@ -1,15 +1,38 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import star from "../assests/star.png"
 import trash from "../assests/trash-can.png"
 import definition from "../assests/open-book.png"
 
-export const FavoriteList = ({favoriteList, setFavorites}) => {
+export const FavoriteList = ({favoriteList, setFavorites, setWord}) => {
+
+  const notify = () => toast.error("Word Has Been Deleted!");
+
+  const handleRedefine = (id) => {
+    const selectedWord = favoriteList.find( item => item.id === id)
+    setWord(selectedWord)
+  }
 
   const handleDelete = (id) => {
     const filteredList = favoriteList.filter( item => item.id !== id )
     setFavorites(filteredList)
   }
+
+
   return (
     <div className=" flex flex-col justify-center w-[650px] p-6">
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="dark"
+        />
         <header className="flex justify-center">
             <div className="flex">
               <img src={star} className="h-6 self-center mx-4" alt="" />
@@ -23,8 +46,8 @@ export const FavoriteList = ({favoriteList, setFavorites}) => {
                     {/* Buttons */}
                     <aside className="mt-4 flex justify-center">
                         <span className="flex w-auto">
-                          <button type="button"><img src={definition} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" /></button>
-                          <button onClick={() => handleDelete(item.id)} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
+                          <button onClick={() => handleRedefine(item.id)} type="button"><img src={definition} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" /></button>
+                          <button onClick={() => {handleDelete(item.id); notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
                         </span>
                     </aside>
                 </div>

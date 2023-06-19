@@ -15,8 +15,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
 
   const notify = () => toast.success("Word Has Been Added!");
 
-  const handleFavoriteWord = (event) => {
-
+  const handleFavoriteWord = () => {
     const favWord = {
       id: Math.floor(Math.random() * 10000),
       word: word
@@ -25,7 +24,6 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
     setFavorites([...favoriteList, favWord])
   }
 
-    console.log(favoriteList)
   return (
     <section className="absolute z-10 h-full max-w-7xl flex justify-center items-center">
       {/* Found/Not Found conditional rendering */}
@@ -45,6 +43,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
                 pauseOnHover
                 theme="light"
                 />
+            {/* Favorite Word Button */}
             <span onClick={() => {handleFavoriteWord() ; notify()}} className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
             {/* User Word & Part of Speech */}
             <div className="flex flex-col">
