@@ -2,7 +2,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSearchParams } from "react-router-dom"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFetch } from "../Hooks/useFetch"
 import { NotFound } from "./NotFound"
 import { Modal } from '../components/Modal';
@@ -14,8 +14,24 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
   const [search] = useSearchParams()
   const [show, setShow] = useState(false)
   const queryWord = search.get("word")
+  const [syns, setSyns] = useState([])
+  const [ants, setAnts] = useState([])
   const {word, pos, variants, def, pronounce} = useFetch(apiPath, queryWord)
   const wordArray = [variants[0], variants[1], variants[2]]
+
+  useEffect( () => {
+    async function fetchTword(){
+      try{
+        const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${queryWord}?key=1ba87066-75da-464f-8573-b253a2504151`)
+        const result = await response.json()
+        setSyns(result[0].meta.syns[0])
+        setAnts(result[0].meta.ants[0])
+      } catch(error){
+        console.log(error)
+      }
+    }
+    fetchTword()
+  }, [queryWord])
 
   const notify = () => toast.success("Word Has Been Added!");
 
@@ -77,11 +93,11 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
                     ))}
                   </ol>
                 </div>
-                <button onClick={() => {setShow(!show)}} type="button" class="focus:outline-none text-white bg-olive hover:bg-lightRed rounded-lg text-xl font-sans font-semibold px-5 py-2.5 mt-4  mb-2">Thesaurus</button>
+                <button onClick={() => {setShow(!show)}} type="button" className="focus:outline-none text-white bg-olive hover:bg-lightRed rounded-lg text-xl font-sans font-semibold px-5 py-2.5 mt-4  mb-2">Thesaurus</button>
                 </div>
           }
       </section>
-      {show && <Modal show={show} setShow={setShow}/>}
+      {show && <Modal show={show} setShow={setShow} word={word} pos={pos} synonyms={syns} antonyms={ants} />}
     </>
   
   )

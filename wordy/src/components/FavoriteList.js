@@ -23,13 +23,13 @@ export const FavoriteList = ({favoriteList, setFavorites, setWord}) => {
     <div className=" flex flex-col justify-center w-[650px] p-6">
       <ToastContainer
         position="top-left"
-        autoClose={2000}
-        hideProgressBar={false}
+        autoClose={1000}
+        hideProgressBar
         newestOnTop={false}
-        closeOnClick
+        closeOnClick={false}
         rtl={false}
-        pauseOnFocusLoss
-        draggable={false}
+        pauseOnFocusLoss={false}
+        draggable
         pauseOnHover
         theme="dark"
         />

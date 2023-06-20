@@ -13,6 +13,10 @@
     background-color: rgba( 0, 0, 0, .55)
 }
 
+#modalOverlay{
+    background-color: rgba( 0, 0, 0, .7)
+}
+
 #homeTitle, #notFound, #favoriteTitle{
     text-shadow: 5px 6px 2px rgba(0,0,0,0.6);
 }
