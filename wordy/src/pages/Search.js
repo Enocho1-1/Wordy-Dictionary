@@ -15,11 +15,8 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
   const [search] = useSearchParams()
   const [show, setShow] = useState(false)
   const queryWord = search.get("word")
-
   const {word, pos, variants, def, pronounce, aword,  audio, syns, ants} = useFetch(apiPath, queryWord)
   const wordArray = [variants[0], variants[1], variants[2]]
-
-
   const notify = () => toast.success("Word Has Been Added!");
   const audioPlay = () => {
     const firstLetter = audio.split('')
