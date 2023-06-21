@@ -4,6 +4,8 @@ export const useFetch = (apiPath, queryWord = "") => {
     const [word, setWord ] = useState("")
     const [pos, setPOS ] = useState("")
     const [pronounce, setPronounce] = useState("")
+    const [aword, setAword] = useState("")
+    const [audio, setAudio] = useState("")
     const [def, setDef] = useState([])
     const [variants, setVariants ] = useState([])
     const [syns, setSyns] = useState([])
@@ -17,9 +19,10 @@ export const useFetch = (apiPath, queryWord = "") => {
             setWord(result[0].meta.id)
             setPOS(result[0].fl)
             setPronounce(result[0].hwi.hw)
+            setAword(result[0].hwi.prs[0].mw)
+            setAudio(result[0].hwi.prs[0].sound.audio)
             setDef(result[0].shortdef)
             setVariants(result[0].meta.stems)
-    
           }catch(error){
             console.log("Word not found")
           }
@@ -34,6 +37,7 @@ export const useFetch = (apiPath, queryWord = "") => {
             const result = await response.json()
             setSyns(result[0].meta.syns[0])
             setAnts(result[0].meta.ants[0])
+            // console.log(result)
           } catch(error){
             console.log(error)
           }
@@ -41,5 +45,5 @@ export const useFetch = (apiPath, queryWord = "") => {
         fetchTword()
       }, [queryWord])
 
-  return { word, pos, variants, def, pronounce, syns, ants }
+  return { word, pos, variants, def, pronounce, aword, audio, syns, ants }
 }

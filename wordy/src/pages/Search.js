@@ -2,11 +2,12 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSearchParams } from "react-router-dom"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useFetch } from "../Hooks/useFetch"
 import { NotFound } from "./NotFound"
 import { Modal } from '../components/Modal';
 import star from "../assests/star.png"
+import audioImg from "../assests/speaker-filled-audio-tool.png"
 
 
 export const Search = ({apiPath, favoriteList, setFavorites}) => {
@@ -15,11 +16,16 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
   const [show, setShow] = useState(false)
   const queryWord = search.get("word")
 
-  const {word, pos, variants, def, pronounce, syns, ants} = useFetch(apiPath, queryWord)
+  const {word, pos, variants, def, pronounce, aword,  audio, syns, ants} = useFetch(apiPath, queryWord)
   const wordArray = [variants[0], variants[1], variants[2]]
 
 
   const notify = () => toast.success("Word Has Been Added!");
+  const audioPlay = () => {
+    const firstLetter = audio.split('')
+    const audioPath = ` https://media.merriam-webster.com/audio/prons/en/us/mp3/${firstLetter[0]}/${audio}.mp3`
+    new Audio(audioPath).play()
+  }
 
   const handleFavoriteWord = () => {
     const favWord = {
@@ -58,7 +64,10 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
                     <h1 className="text-7xl font-extrabold">{word}</h1>
                     <p className="text-5xl text-coral font-bold self-end my-[2px] mx-4">{pos}</p>
                   </aside>
-                  <p className="mt-4 text-4xl mx-2">{pronounce}</p>
+                  <aside className="flex mt-2">
+                    <p className="mt-4 text-4xl mx-2">{pronounce}</p>
+                    <button onClick={audioPlay} type="button" className="flex items-center text-lightRed border border-lightRed hover:bg-red-200 focus:outline-none focus:ring-red-300 font-medium rounded-[45px] text-md mt-4 px-2 text-center align-self-center">{aword}<img className="h-6 mx-2" src={audioImg} alt="audio"/></button>
+                  </aside>
                 </div>
 
                 {/* Word Variants List */}
