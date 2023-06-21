@@ -19,18 +19,18 @@ export const Modal = ({show,setShow, word, pos, synonyms,antonyms}) => {
                <div className="mt-4 p-2">
                     <h1 className=" mb-3 text-2xl font-extrabold">Synonyms & Similar Words</h1>
                     <aside className="h-[200px] flex flex-wrap overflow-y-auto">
-                        {synonyms.map( (item, index) => (
+                        {synonyms ? synonyms.map( (item, index) => (
                              <span key={index} className=" h-fit p-2 m-2 bg-coral text-white text-xl rounded-lg">{item}</span>
-                        ))}
+                        )):""}
                     </aside>
                </div>
 
                <div className="mt-4 p-2">
                     <h1 className=" mb-3 text-2xl font-extrabold">Antonyms & Near Antonyms</h1>
                     <aside className="h-[200px] flex flex-wrap overflow-y-auto">
-                        {antonyms.map( (item, index) => (
+                        {antonyms ? antonyms.map( (item, index) => (
                              <span key={index} className=" h-fit p-2 m-2 bg-olive text-white text-xl rounded-lg">{item}</span>
-                        ))}
+                        )) : "" }
                     </aside>
                </div>
             </div>

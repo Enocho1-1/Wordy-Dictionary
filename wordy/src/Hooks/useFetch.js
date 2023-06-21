@@ -6,6 +6,8 @@ export const useFetch = (apiPath, queryWord = "") => {
     const [pronounce, setPronounce] = useState("")
     const [def, setDef] = useState([])
     const [variants, setVariants ] = useState([])
+    const [syns, setSyns] = useState([])
+    const [ants, setAnts] = useState([])
     useEffect( () => {
         async function fetchWord(){
           try{
@@ -25,5 +27,19 @@ export const useFetch = (apiPath, queryWord = "") => {
         fetchWord()
       },[apiPath])
 
-  return { word, pos, variants, def, pronounce }
+      useEffect( () => {
+        async function fetchTword(){
+          try{
+            const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${queryWord}?key=1ba87066-75da-464f-8573-b253a2504151`)
+            const result = await response.json()
+            setSyns(result[0].meta.syns[0])
+            setAnts(result[0].meta.ants[0])
+          } catch(error){
+            console.log(error)
+          }
+        }
+        fetchTword()
+      }, [queryWord])
+
+  return { word, pos, variants, def, pronounce, syns, ants }
 }

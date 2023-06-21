@@ -14,24 +14,10 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
   const [search] = useSearchParams()
   const [show, setShow] = useState(false)
   const queryWord = search.get("word")
-  const [syns, setSyns] = useState([])
-  const [ants, setAnts] = useState([])
-  const {word, pos, variants, def, pronounce} = useFetch(apiPath, queryWord)
+
+  const {word, pos, variants, def, pronounce, syns, ants} = useFetch(apiPath, queryWord)
   const wordArray = [variants[0], variants[1], variants[2]]
 
-  useEffect( () => {
-    async function fetchTword(){
-      try{
-        const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${queryWord}?key=1ba87066-75da-464f-8573-b253a2504151`)
-        const result = await response.json()
-        setSyns(result[0].meta.syns[0])
-        setAnts(result[0].meta.ants[0])
-      } catch(error){
-        console.log(error)
-      }
-    }
-    fetchTword()
-  }, [queryWord])
 
   const notify = () => toast.success("Word Has Been Added!");
 
