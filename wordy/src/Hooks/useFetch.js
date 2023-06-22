@@ -10,6 +10,8 @@ export const useFetch = (apiPath, queryWord = "") => {
     const [variants, setVariants ] = useState([])
     const [syns, setSyns] = useState([])
     const [ants, setAnts] = useState([])
+
+    // User Input useEffect
     useEffect( () => {
         async function fetchWord(){
           try{
@@ -30,6 +32,7 @@ export const useFetch = (apiPath, queryWord = "") => {
         fetchWord()
       },[apiPath])
 
+      // Synonyms & Antonyms useEffect
       useEffect( () => {
         async function fetchTword(){
           try{
@@ -37,7 +40,6 @@ export const useFetch = (apiPath, queryWord = "") => {
             const result = await response.json()
             setSyns(result[0].meta.syns[0])
             setAnts(result[0].meta.ants[0])
-            // console.log(result)
           } catch(error){
             console.log(error)
           }

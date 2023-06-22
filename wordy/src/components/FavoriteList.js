@@ -20,7 +20,7 @@ export const FavoriteList = ({favoriteList, setFavorites, setWord}) => {
 
 
   return (
-    <div className=" flex flex-col justify-center w-[650px] p-6">
+    <div className=" flex flex-col justify-center w-[650px] max-sm:w-[350px] p-6">
       <ToastContainer
         position="top-left"
         autoClose={1000}
