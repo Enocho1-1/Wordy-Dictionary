@@ -87,7 +87,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
                   </ol>
                 </div>
                 <button onClick={() => {setShow(!show)}} type="button" className="focus:outline-none text-white bg-olive hover:bg-lightRed rounded-lg text-xl font-sans font-semibold px-5 py-2.5 mt-4  mb-2">Thesaurus</button>
-                </div>
+              </div>
           }
       </section>
       {show && <Modal show={show} setShow={setShow} word={word} pos={pos} synonyms={syns} antonyms={ants} />}
