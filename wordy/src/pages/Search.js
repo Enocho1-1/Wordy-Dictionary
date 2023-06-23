@@ -40,7 +40,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
           { def.length === 0 
             ?< NotFound/>
             :  
-              <div className=" relative p-6 max-sm:w-[350px]">
+              <div className=" relative p-6 max-sm:w-[350px] max-[375px]:mt-20">
                 <ToastContainer
                     position="top-left"
                     autoClose={1000}
@@ -69,7 +69,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
                 </div>
 
                 {/* Word Variants List */}
-                <div className="mt-2 flex flex-wrap max-sm:flex-col">
+                <div className="mt-2 flex flex-wrap">
                   {wordArray.map((item, index) => (
                     <p className="text-2xl text-olive font-bold mx-1" key={index}>{item}</p>
                   ))}
@@ -80,7 +80,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
                   <ol>
                     {def.map((item, index ) => (
                       <div key={index}> 
-                        <li className="text-3xl font-semibold my-3" ><span className="text-2xl text-lime mr-1">{index}:</span>{item}</li>
+                        <li className="text-2xl font-semibold my-3" ><span className="text-2xl text-lime mr-1">{index}:</span>{item}</li>
                       </div>
                     
                     ))}
