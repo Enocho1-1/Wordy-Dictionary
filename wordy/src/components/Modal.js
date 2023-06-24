@@ -5,7 +5,7 @@ export const Modal = ({show,setShow, word, pos, synonyms,antonyms}) => {
   return (
     <>
         <section className="absolute top-0 left-0 right-0 bottom-0 h-full w-full flex justify-center items-center z-40" id="modalOverlay">
-            <div className="bg-white w-[500px] max-sm:w-[350px] max-[375px]:h-fit">
+            <div className="bg-white w-[600px] max-sm:w-[350px] max-[375px]:h-fit">
                <header className="flex justify-between w-auto border-b">
                     <aside className="flex items-center max-sm:flex-col">
                         <h1 className="text-5xl m-4 font-extrabold max-sm:m-2">{word}</h1>
