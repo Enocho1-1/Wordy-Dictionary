@@ -5,7 +5,7 @@ import videoBg from "./assests/videoBg.mp4"
 
 function App() {
   return (
-    <main className="relative w-full h-screen flex justify-center">
+    <main className="relative w-full h-screen flex justify-center overflow-x-hidden">
        <header className="z-20 absolute w-fit top-[12%] max-sm:top-[5%] max-[360px]:top-[5%] max-[375px]:top-[1%] min-[390px]:max-[414px]:top-[5%] max-[540px]:top-[2%]">
             <div className="flex">
                 <Link to="/"><img src={Logo} className="h-12 max-sm:h-9 self-center mx-4" alt="" /></Link>

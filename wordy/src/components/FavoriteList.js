@@ -14,8 +14,6 @@ export const FavoriteList = ({favoriteList, setFavorites}) => {
   const [word, setWord] = useState({})
   const notify = () => toast.error("Word Has Been Deleted!");
 
-
- 
   const handleRedefine = (id) => {
     const selectedWord = favoriteList.find( item => item.id === id)
     setWord(selectedWord)
@@ -26,7 +24,6 @@ export const FavoriteList = ({favoriteList, setFavorites}) => {
     setFavorites(filteredList)
   }
 
-  console.log(word)
   return (
     <>
       <div className="flex flex-col w-[650px] max-sm:w-[350px] p-6">
@@ -55,7 +52,7 @@ export const FavoriteList = ({favoriteList, setFavorites}) => {
                     {/* Buttons */}
                     <aside className="mt-4 flex justify-center">
                         <span className="flex w-auto">
-                          <button onClick={() => {handleRedefine(item.id);setShow(!show)}} type="button"><img src={definitionImg} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" /></button>
+                          <button onClick={() => {handleRedefine(item.id);setShow(!show)}} type="button"><img src={definitionImg} className="h-[20px] mx-2 hover:cursor-pointer"  alt="definition" title='definition' /></button>
                           <button onClick={() => {handleDelete(item.id); notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
                         </span>
                     </aside>
@@ -76,8 +73,15 @@ export const FavoriteList = ({favoriteList, setFavorites}) => {
             </span>
             </header>
           </div>
-   
-          
+           {/* modal content */}
+           <div className="mt-4 p-2">
+                  <h1 className=" mb-3 text-2xl font-extrabold">Definition(s):</h1>
+                  <ul className="h-[200px] overflow-y-auto">
+                    {word.definition.map( (item, index) => (
+                     <li key={index} className='text-xl font-medium'><span className="text-2xl inline-block mr-2">{index}:</span>{item}</li>
+                    ))}
+                  </ul>
+            </div>
        </Modal>
        }
     </>
