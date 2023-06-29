@@ -20,7 +20,7 @@ export const FavoriteList = ({favoriteList, setFavorites, setWord}) => {
 
 
   return (
-    <div className=" flex flex-col justify-center w-[650px] max-sm:w-[350px] p-6">
+    <div className="flex flex-col w-[650px] max-sm:w-[350px] p-6">
       <ToastContainer
         position="top-left"
         autoClose={1000}
@@ -35,8 +35,8 @@ export const FavoriteList = ({favoriteList, setFavorites, setWord}) => {
         />
         <header className="flex justify-center">
             <div className="flex">
-              <img src={star} className="h-6 self-center mx-4" alt="" />
-                <h1 className="font-sans font-extrabold text-4xl text-coral" id="favoriteTitle">Favorites</h1>
+              <img src={star} className="h-6 self-center mr-2" alt="" />
+              <h1 className="font-sans font-extrabold text-4xl text-coral" id="favoriteTitle">Favorites</h1>
             </div>
         </header>
         <aside className="mt-4 h-[150px] p-2 w-fit flex justify-center flex-wrap overflow-y-auto">

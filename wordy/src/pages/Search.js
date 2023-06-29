@@ -8,6 +8,7 @@ import { NotFound } from "./NotFound"
 import { Modal } from '../components/Modal';
 import star from "../assests/star.png"
 import audioImg from "../assests/speaker-filled-audio-tool.png"
+import close from "../assests/close-button.png"
 
 
 export const Search = ({apiPath, favoriteList, setFavorites}) => {
@@ -90,7 +91,37 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
               </div>
           }
       </section>
-      {show && <Modal show={show} setShow={setShow} word={word} pos={pos} synonyms={syns} antonyms={ants} />}
+      {show && 
+      <Modal>
+         <header className="flex justify-between w-auto border-b">
+                    <aside className="flex items-center max-sm:flex-col">
+                        <h1 className="text-5xl m-4 font-extrabold max-sm:m-2">{word}</h1>
+                        <p className="text-3xl text-coral font-bold mt-4 max-sm:mt-0">{pos}</p>
+                    </aside>
+                    <span onClick={() => {setShow(!show)}} className="hover:cursor-pointer self-center mx-2">
+                        <img src={close} className="h-10" alt="close" />
+                    </span>
+               </header>
+               {/* modal content */}
+               <div className="mt-4 p-2">
+                    <h1 className=" mb-3 text-2xl font-extrabold">Synonyms & Similar Words</h1>
+                    <aside className="h-[200px] flex flex-wrap overflow-y-auto">
+                        {syns ? syns.map( (item, index) => (
+                             <span key={index} className=" h-fit p-2 m-2 bg-coral text-white text-xl rounded-lg">{item}</span>
+                        )):""}
+                    </aside>
+               </div>
+
+               <div className="mt-4 p-2">
+                    <h1 className=" mb-3 text-2xl font-extrabold">Antonyms & Near Antonyms</h1>
+                    <aside className="h-[200px] flex flex-wrap overflow-y-auto">
+                        {ants ? ants.map( (item, index) => (
+                             <span key={index} className=" h-fit p-2 m-2 bg-olive text-white text-xl rounded-lg">{item}</span>
+                        )) : "" }
+                    </aside>
+               </div>
+      </Modal>
+      }
     </>
   
   )
