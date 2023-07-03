@@ -45,7 +45,7 @@ export const useFetch = (apiPath, queryWord = "") => {
           }
         }
         fetchTword()
-      }, [queryWord])
+      }, [])
 
   return { word, pos, variants, def, pronounce, aword, audio, syns, ants }
 }
