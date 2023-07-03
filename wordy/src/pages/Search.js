@@ -42,7 +42,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
           { def.length === 0 
             ?< NotFound/>
             :  
-              <div className=" relative p-6 max-sm:w-[350px] max-[375px]:mt-20 max-[540px]:mt-20 max-[420px]:h-[500px] max-[420px]:overflow-y-scroll" >
+              <div className=" relative p-6 max-[375px]:mt-20 max-[540px]:mt-20 max-[420px]:h-[500px] max-[420px]:overflow-y-scroll max-sm:overflow-x-hidden" >
                 <ToastContainer
                     position="top-left"
                     autoClose={1000}

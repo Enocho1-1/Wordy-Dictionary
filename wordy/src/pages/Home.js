@@ -10,8 +10,8 @@ export const Home = ({favoriteList, setFavorites}) => {
             
     }
   return (
-    <section className="z-50 w-full max-[414px]:w-fit flex flex-col justify-center items-center">
-        <div className="h-auto w-[750px] max-sm:w-[350px] mb-[5em] p-6">
+    <section className="z-50 w-full max-[414px]:w-fit flex flex-col justify-center items-center max-sm:overflow-x-hidden">
+        <div className="h-auto w-[750px] max-sm:w-max mb-[5em] p-6">
             <form onSubmit={handleSumbit} className="flex items-center">   
                 <label htmlFor="simple-search" className="sr-only">Search</label>
                 <div className="relative w-full">
