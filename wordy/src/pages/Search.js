@@ -37,7 +37,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
 
   return (
     <>
-        <section className="absolute z-10 h-full w-full flex justify-center items-center">
+        <section className="absolute z-10 h-full w-full max-[414px]:w-fit flex justify-center items-center">
           {/* Found/Not Found conditional rendering */}
           { def.length === 0 
             ?< NotFound/>

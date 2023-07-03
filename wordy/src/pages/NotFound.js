@@ -3,7 +3,7 @@ import sadFace from "../assests/sad.png"
 
 export const NotFound = () => {
   return (
-    <section className="max-w-7xl ">
+    <section className="max-w-7xl max-[414px]:w-fit">
         <div className="p-6">
             <span className="flex justify-center ">
                 <h1 className="text-center font-extrabold text-5xl my-6 max-sm:text-4xl text-lightRed" id="notFound">Word Not Found</h1>
