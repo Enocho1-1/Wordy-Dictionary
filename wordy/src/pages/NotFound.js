@@ -6,7 +6,7 @@ export const NotFound = () => {
     <section className="max-w-7xl max-[414px]:w-fit max-sm:overflow-x-hidden">
         <div className="p-6">
             <span className="flex justify-center ">
-                <h1 className="text-center font-extrabold text-5xl my-6 max-sm:text-4xl text-lightRed" id="notFound">Word Not Found</h1>
+                <h1 className="text-center font-extrabold text-5xl my-6 max-sm:text-4xl text-lightRed" id="notFound">Word Not Found!</h1>
                 <img className="self-center mx-4 h-12 w-16 max-sm:w-10" src={sadFace} alt="" />
             </span>
             <img className="rounded-md" src={sad} alt="" />
