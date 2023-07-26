@@ -1,28 +1,30 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { Modal } from '../components/Modal';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useList } from '../context/ListContext';
 import star from "../assests/star.png"
 import trash from "../assests/trash-can.png"
 import definitionImg from "../assests/open-book.png"
 import close from "../assests/close-button.png"
 
 
-export const FavoriteList = ({favoriteList, setFavorites}) => {
+export const FavoriteList = () => {
 
+  const {list} = useList()
   const [show, setShow] = useState(false)
   const [word, setWord] = useState({})
   const notify = () => toast.error("Word Has Been Deleted!");
 
-  const handleRedefine = (id) => {
-    const selectedWord = favoriteList.find( item => item.id === id)
-    setWord(selectedWord)
-  }
+  // const handleRedefine = (id) => {
+  //   const selectedWord = favoriteList.find( item => item.id === id)
+  //   setWord(selectedWord)
+  // }
 
-  const handleDelete = (id) => {
-    const filteredList = favoriteList.filter( item => item.id !== id )
-    setFavorites(filteredList)
-  }
+  // const handleDelete = (id) => {
+  //   const filteredList = favoriteList.filter( item => item.id !== id )
+  //   setFavorites(filteredList)
+  // }
 
   return (
     <>
@@ -46,14 +48,14 @@ export const FavoriteList = ({favoriteList, setFavorites}) => {
             </div>
         </header>
         <aside className="mt-4 h-[150px] p-2 w-fit flex justify-center flex-wrap overflow-y-auto">
-            {favoriteList.map(item => (
+            {list.map(item => (
                 <div key={item.id} className="flex flex-col justify-center items-center h-[100px] w-[150px] mx-3 my-4" >
                     <p className="text-xl text-coral font-semibold">{item.word}</p>
-                    {/* Buttons */}
+               
                     <aside className="mt-4 flex justify-center">
                         <span className="flex w-auto">
-                          <button onClick={() => {handleRedefine(item.id);setShow(!show)}} type="button"><img src={definitionImg} className="h-[20px] mx-2 hover:cursor-pointer"  alt="definition" title='definition' /></button>
-                          <button onClick={() => {handleDelete(item.id); notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
+                          <button onClick={() => {setShow(!show)}} type="button"><img src={definitionImg} className="h-[20px] mx-2 hover:cursor-pointer"  alt="definition" title='definition' /></button>
+                          <button onClick={() => { notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
                         </span>
                     </aside>
                 </div>

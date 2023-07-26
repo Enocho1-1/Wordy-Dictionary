@@ -3,7 +3,7 @@ export const ListReducer = (state, action) => {
 
     switch(type){
         case "ADD_WORD":
-            return
+            return {...state, list: payload.word}
         default:
             throw new Error('Unable to add word to list')
     }

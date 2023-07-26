@@ -1,6 +1,7 @@
 
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import { useList } from '../context/ListContext';
 import { useSearchParams } from "react-router-dom"
 import { useState } from 'react';
 import { useFetch } from "../Hooks/useFetch"
@@ -11,29 +12,25 @@ import audioImg from "../assests/speaker-filled-audio-tool.png"
 import close from "../assests/close-button.png"
 
 
-export const Search = ({apiPath, favoriteList, setFavorites}) => {
+export const Search = ({apiPath}) => {
 
   const [search] = useSearchParams()
   const [show, setShow] = useState(false)
   const queryWord = search.get("word")
+  
+  const {addFavWord} = useList()
   const {word, pos, variants, def, pronounce, aword,  audio, syns, ants} = useFetch(apiPath, queryWord)
+
   const wordArray = [variants[0], variants[1], variants[2]]
+
   const notify = () => toast.success("Word Has Been Added!");
+
   const audioPlay = () => {
     const firstLetter = audio.split('')
     const audioPath = ` https://media.merriam-webster.com/audio/prons/en/us/mp3/${firstLetter[0]}/${audio}.mp3`
     new Audio(audioPath).play()
   }
 
-  const handleFavoriteWord = () => {
-    const favWord = {
-      id: Math.floor(Math.random() * 10000),
-      word: word,
-      definition: def
-    }
-
-    setFavorites([...favoriteList, favWord])
-  }
 
   return (
     <>
@@ -56,7 +53,7 @@ export const Search = ({apiPath, favoriteList, setFavorites}) => {
                     theme="light"
                     />
                 {/* Favorite Word Button */}
-                <span onClick={() => {handleFavoriteWord() ; notify()}} className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
+                <span onClick={() => {addFavWord(word,def) ; notify()}} className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
 
                 {/* User Word & Part of Speech */}
                 <div className="flex flex-col">

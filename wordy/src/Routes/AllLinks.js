@@ -4,17 +4,12 @@ import { Home, Search, Thesaurus } from "../pages"
 
 export const AllLinks = () => {
 
-  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem("favorites"))  || [])
-
-
-  useEffect( () => {
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-  }, [favorites])
+ 
   return (
     <>
         <Routes>
-            <Route path="/" element={<Home favoriteList={favorites} setFavorites={setFavorites} />}/>
-            <Route  path="search" element={<Search apiPath="collegiate/json/" favoriteList={favorites} setFavorites={setFavorites}/>}/>
+            <Route path="/" element={<Home />}/>
+            <Route  path="search" element={<Search apiPath="collegiate/json/"/>}/>
             <Route  path="thesaurus" element={<Thesaurus/>}/>
         </Routes>
     </>
