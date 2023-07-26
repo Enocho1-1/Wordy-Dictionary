@@ -17,7 +17,7 @@ export const Search = ({apiPath}) => {
   const [search] = useSearchParams()
   const [show, setShow] = useState(false)
   const queryWord = search.get("word")
-  
+
   const {addFavWord} = useList()
   const {word, pos, variants, def, pronounce, aword,  audio, syns, ants} = useFetch(apiPath, queryWord)
 
@@ -39,7 +39,7 @@ export const Search = ({apiPath}) => {
           { def.length === 0 
             ?< NotFound/>
             :  
-              <div className=" relative p-6 max-[375px]:mt-20 max-[375px]:w-[300px] min-[375px]:max-[420px]:w-[350px] max-[420px]:h-[500px] max-[420px]:overflow-y-scroll" >
+              <div className=" relative mt-6 p-6 max-[375px]:mt-20 max-[375px]:w-[300px] min-[375px]:max-[420px]:w-[350px] max-[420px]:h-[500px] max-[420px]:overflow-y-scroll" >
                 <ToastContainer
                     position="top-left"
                     autoClose={1000}
@@ -75,7 +75,7 @@ export const Search = ({apiPath}) => {
                 </div>
 
                 {/* Definition Section */}
-                <div className="mt-4">
+                <div className="mt-4 max-w-[700px]">
                   <ol>
                     {def.map((item, index ) => (
                       <div key={index}> 

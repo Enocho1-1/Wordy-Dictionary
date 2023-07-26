@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { Routes, Route } from "react-router-dom"
 import { Home, Search, Thesaurus } from "../pages"
 
