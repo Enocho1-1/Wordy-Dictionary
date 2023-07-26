@@ -29,10 +29,21 @@ export const ListProvider = ({children}) => {
             payload:{word: updateList }
         })
     }
+
+    // Delete Favorite Word Func.
+    const deleteFavWord = (word) => {
+        const filteredList = state.list.filter( item => item.id !== word.id)
+
+        dispatch({
+            type:"DELETE_WORD",
+            payload:{word: filteredList}
+        })
+    }
     
     const value = {
         list : state.list,
-        addFavWord     
+        addFavWord,
+        deleteFavWord    
     }
     return(
         <ListContext.Provider value={value}>

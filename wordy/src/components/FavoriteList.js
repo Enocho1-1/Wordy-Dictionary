@@ -11,7 +11,7 @@ import close from "../assests/close-button.png"
 
 export const FavoriteList = () => {
 
-  const {list} = useList()
+  const {list, deleteFavWord} = useList()
   const [show, setShow] = useState(false)
   const [word, setWord] = useState({})
   const notify = () => toast.error("Word Has Been Deleted!");
@@ -19,11 +19,6 @@ export const FavoriteList = () => {
   // const handleRedefine = (id) => {
   //   const selectedWord = favoriteList.find( item => item.id === id)
   //   setWord(selectedWord)
-  // }
-
-  // const handleDelete = (id) => {
-  //   const filteredList = favoriteList.filter( item => item.id !== id )
-  //   setFavorites(filteredList)
   // }
 
   return (
@@ -55,7 +50,7 @@ export const FavoriteList = () => {
                     <aside className="mt-4 flex justify-center">
                         <span className="flex w-auto">
                           <button onClick={() => {setShow(!show)}} type="button"><img src={definitionImg} className="h-[20px] mx-2 hover:cursor-pointer"  alt="definition" title='definition' /></button>
-                          <button onClick={() => { notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
+                          <button onClick={() => { deleteFavWord(item);notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
                         </span>
                     </aside>
                 </div>
