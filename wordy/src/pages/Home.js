@@ -11,7 +11,7 @@ export const Home = ({favoriteList, setFavorites}) => {
     }
   return (
     <section className="z-50 w-full max-[414px]:w-fit flex flex-col justify-center items-center max-sm:overflow-x-hidden">
-        <div className="h-auto w-[750px] max-sm:w-max mb-[5em] p-6">
+        <div className="h-auto w-[750px] max-sm:w-max lg:mt-8 mb-[5em] p-6">
             <form onSubmit={handleSumbit} className="flex items-center">   
                 <label htmlFor="simple-search" className="sr-only">Search</label>
                 <div className="relative w-full">
@@ -20,7 +20,7 @@ export const Home = ({favoriteList, setFavorites}) => {
                     </div>
                     <input type="text" name="word" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 " placeholder="Search Wordy Dictionary..." autoComplete="off" required/>
                 </div>
-                <button type="submit" className="p-2.5 ml-2 text-sm font-medium text-white bg-lightRed rounded-lg hover:bg-lime focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button type="submit" className="p-2.5 ml-2 text-sm font-medium text-white bg-lightRed rounded-lg hover:bg-lime focus:ring-4 focus:outline-none">
                     <svg className="w-5 h-5" fillRule="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     <span className="sr-only">Search</span>
                 </button>
