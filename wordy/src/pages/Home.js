@@ -27,7 +27,7 @@ export const Home = ({favoriteList, setFavorites}) => {
             </form>
         </div>
 
-        <FavoriteList  favoriteList={favoriteList} setFavorites={setFavorites}/>
+        <FavoriteList />
         
     </section>
   )

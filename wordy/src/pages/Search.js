@@ -18,7 +18,6 @@ export const Search = ({apiPath}) => {
   const [show, setShow] = useState(false)
   const queryWord = search.get("word")
 
-  const {addFavWord} = useList()
   const {word, pos, variants, def, pronounce, aword,  audio, syns, ants} = useFetch(apiPath, queryWord)
 
   const wordArray = [variants[0], variants[1], variants[2]]
@@ -53,7 +52,7 @@ export const Search = ({apiPath}) => {
                     theme="light"
                     />
                 {/* Favorite Word Button */}
-                <span onClick={() => {addFavWord(word,def) ; notify()}} className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
+                <span onClick={() => { notify()}} className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
 
                 {/* User Word & Part of Speech */}
                 <div className="flex flex-col">

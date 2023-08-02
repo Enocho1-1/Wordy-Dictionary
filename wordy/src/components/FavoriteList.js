@@ -2,7 +2,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { Modal } from '../components/Modal';
 import { ToastContainer, toast } from 'react-toastify';
-import { useList } from '../context/ListContext';
+
 import star from "../assests/star.png"
 import trash from "../assests/trash-can.png"
 import definitionImg from "../assests/open-book.png"
@@ -11,15 +11,15 @@ import close from "../assests/close-button.png"
 
 export const FavoriteList = () => {
 
-  const {list, deleteFavWord} = useList()
+  // const {list, deleteFavWord} = useList()
   const [show, setShow] = useState(false)
   const [word, setWord] = useState({})
   const notify = () => toast.error("Word Has Been Deleted!");
 
-  const handleRedefine = (id) => {
-    const selectedWord = list.find( item => item.id === id)
-    setWord(selectedWord)
-  }
+  // const handleRedefine = (id) => {
+  //   const selectedWord = list.find( item => item.id === id)
+  //   setWord(selectedWord)
+  // }
 
   return (
     <>
@@ -42,7 +42,7 @@ export const FavoriteList = () => {
               <h1 className="font-sans font-extrabold text-4xl text-coral" id="favoriteTitle">Favorites</h1>
             </div>
         </header>
-        <aside className="mt-4 h-[150px] p-2 w-fit flex justify-center flex-wrap overflow-y-auto">
+        {/* <aside className="mt-4 h-[150px] p-2 w-fit flex justify-center flex-wrap overflow-y-auto">
             {list.map(item => (
                 <div key={item.id} className="flex flex-col justify-center items-center h-[100px] w-[150px] mx-3 my-4" >
                     <p className="text-xl text-coral font-semibold">{item.word}</p>
@@ -55,7 +55,7 @@ export const FavoriteList = () => {
                     </aside>
                 </div>
             ))}
-        </aside>
+        </aside> */}
     </div>
     {show && 
        <Modal>
@@ -65,6 +65,7 @@ export const FavoriteList = () => {
                 <h1 className="text-5xl m-4 font-extrabold max-sm:m-2">{word.word}</h1>
                 <p className="text-3xl text-coral font-bold mt-4 max-sm:mt-0"></p>
             </aside>
+            {/* Close Button */}
             <span onClick={() => {setShow(!show)}} className="hover:cursor-pointer self-center mx-2">
                 <img src={close} className="h-10" alt="close" />
             </span>
