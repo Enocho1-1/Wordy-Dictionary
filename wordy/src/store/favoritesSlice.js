@@ -1,11 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// LocalStorage Function
+function LSFunc(list){
+    localStorage.setItem("favoriteList",JSON.stringify(list))
+}
 const favoritesSlice = createSlice({
     name: "favorites",
-    initialState:[],
+    initialState: JSON.parse(localStorage.getItem('favoriteList')) || [],
     reducers:{
         addFavorite:(state,action)=>{
-            console.log(action.payload)
+            const updateFavorites = state.concat(action.payload)
+            LSFunc(updateFavorites)
+            return [...updateFavorites]
         },
         removeFavorite:(state,action)=>{
 

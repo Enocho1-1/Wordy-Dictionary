@@ -23,6 +23,7 @@ export const Search = ({apiPath}) => {
   const {word, pos, variants, def, pronounce, aword,  audio, syns, ants} = useFetch(apiPath, queryWord)
 
   const wordObj = {
+    id:Math.floor(Math.random() * 50000),
     word: word,
     definition: def
   }
