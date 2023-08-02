@@ -20,10 +20,10 @@ export const FavoriteList = () => {
   const list = useSelector( state => state.favorites)
   const notify = () => toast.error("Word Has Been Deleted!");
 
-  // const handleRedefine = (id) => {
-  //   const selectedWord = list.find( item => item.id === id)
-  //   setWord(selectedWord)
-  // }
+  const handleRedefine = (id) => {
+    const selectedWord = list.find( item => item.id === id)
+    setWord(selectedWord)
+  }
 
   return (
     <>
@@ -53,7 +53,7 @@ export const FavoriteList = () => {
                
                     <aside className="mt-4 flex justify-center">
                         <span className="flex w-auto">
-                          <button onClick={() => { setShow(!show)}} type="button"><img src={definitionImg} className="h-[20px] mx-2 hover:cursor-pointer"  alt="definition" title='definition' /></button>
+                          <button onClick={() => {handleRedefine(item.id); setShow(!show)}} type="button"><img src={definitionImg} className="h-[20px] mx-2 hover:cursor-pointer"  alt="definition" title='definition' /></button>
                           <button onClick={() => {dispatch(removeFavorite(item)); notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
                         </span>
                     </aside>

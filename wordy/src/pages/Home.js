@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { FavoriteList } from "../components/FavoriteList"
 
-export const Home = ({favoriteList, setFavorites}) => {
+export const Home = () => {
     const navigate = useNavigate()
     // Handle Submit
     const handleSumbit = (event) => {

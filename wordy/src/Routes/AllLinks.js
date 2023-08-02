@@ -2,8 +2,6 @@ import { Routes, Route } from "react-router-dom"
 import { Home, Search, Thesaurus } from "../pages"
 
 export const AllLinks = () => {
-
- 
   return (
     <>
         <Routes>

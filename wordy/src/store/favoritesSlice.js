@@ -13,10 +13,6 @@ const favoritesSlice = createSlice({
             LSFunc(updateFavorites)
             return [...updateFavorites]
         },
-        redefine:(state,action) =>{
-            const seletedWord = state.find( item => item.id === action.payload.id)
-            return seletedWord
-        },
         removeFavorite:(state,action)=>{
             const filteredList = state.filter( item => item.id !== action.payload.id)
             LSFunc(filteredList)
@@ -25,5 +21,5 @@ const favoritesSlice = createSlice({
     }
 })
 
-export const { addFavorite, redefine, removeFavorite} = favoritesSlice.actions
+export const { addFavorite, removeFavorite} = favoritesSlice.actions
 export const favoriteReducers = favoritesSlice.reducer
