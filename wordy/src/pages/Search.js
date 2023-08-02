@@ -1,10 +1,11 @@
 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import { useList } from '../context/ListContext';
+import { useDispatch } from 'react-redux';
 import { useSearchParams } from "react-router-dom"
 import { useState } from 'react';
 import { useFetch } from "../Hooks/useFetch"
+import { addFavorite } from '../store/favoritesSlice';
 import { NotFound } from "./NotFound"
 import { Modal } from '../components/Modal';
 import star from "../assests/star.png"
@@ -17,8 +18,14 @@ export const Search = ({apiPath}) => {
   const [search] = useSearchParams()
   const [show, setShow] = useState(false)
   const queryWord = search.get("word")
+  const dispatch = useDispatch()
 
   const {word, pos, variants, def, pronounce, aword,  audio, syns, ants} = useFetch(apiPath, queryWord)
+
+  const wordObj = {
+    word: word,
+    definition: def
+  }
 
   const wordArray = [variants[0], variants[1], variants[2]]
 
@@ -52,7 +59,7 @@ export const Search = ({apiPath}) => {
                     theme="light"
                     />
                 {/* Favorite Word Button */}
-                <span onClick={() => { notify()}} className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
+                <span onClick={() => {dispatch(addFavorite(wordObj)); notify()}} className=" absolute top-5 right-5 hover:cursor-pointer" title="favorite"><img className="animate-bounce h-10 w-10" src={star} alt="" /></span>
 
                 {/* User Word & Part of Speech */}
                 <div className="flex flex-col">
