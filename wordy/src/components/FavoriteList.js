@@ -1,7 +1,8 @@
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFavorite } from '../store/favoritesSlice';
 import { Modal } from '../components/Modal';
 import star from "../assests/star.png"
 import trash from "../assests/trash-can.png"
@@ -15,6 +16,7 @@ export const FavoriteList = () => {
   const [show, setShow] = useState(false)
   const [word, setWord] = useState({})
 
+  const dispatch = useDispatch()
   const list = useSelector( state => state.favorites)
   const notify = () => toast.error("Word Has Been Deleted!");
 
@@ -52,7 +54,7 @@ export const FavoriteList = () => {
                     <aside className="mt-4 flex justify-center">
                         <span className="flex w-auto">
                           <button onClick={() => { setShow(!show)}} type="button"><img src={definitionImg} className="h-[20px] mx-2 hover:cursor-pointer"  alt="definition" title='definition' /></button>
-                          <button onClick={() => { notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
+                          <button onClick={() => {dispatch(removeFavorite(item)); notify()}} type="button"><img src={trash} className="h-[20px] mx-2 hover:cursor-pointer"  alt="" title="delete"/></button>
                         </span>
                     </aside>
                 </div>
