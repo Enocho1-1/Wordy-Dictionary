@@ -46,7 +46,7 @@ export const Search = ({apiPath}) => {
           { def.length === 0 
             ?< NotFound/>
             :  
-              <div className=" relative mt-6 p-6 max-[375px]:mt-20 max-[375px]:w-[300px] min-[375px]:max-[420px]:w-[350px] max-[420px]:h-[500px] max-[420px]:overflow-y-scroll lg:mt-14" >
+              <div className=" relative mt-6 p-6 max-[375px]:mt-20 max-[375px]:w-[300px] min-[375px]:max-[420px]:w-[350px] max-[420px]:h-[500px] max-[420px]:overflow-y-scroll lg:mt-14 xl:max-2xl:overflow-y-scroll xl:max-2xl:h-[450px]" >
                 <ToastContainer
                     position="top-left"
                     autoClose={1000}
